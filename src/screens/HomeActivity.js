@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, View, ActivityIndicator, Text } from 'react-native';
 import Activity from '../components/Activity';
@@ -18,10 +18,13 @@ const HomeActivity = () => {
 
   // FAZER VERIFICAÇÇÃO PARA NÃO ADICIONAR ATIVIDADE JÁ EXISTENTE
   function addToList() {
-    if (listActivity.includes(activity)) {
-      return true;
-    } else {
-      setListActivity([...listActivity, { ...activity }]);
+    for (var i = 0; i <= listActivity.length; i++) {
+      if (listActivity[i]?.key === activity?.key) {
+        console.warn('Item já adicionado !');
+        break;
+      } else {
+        setListActivity([...listActivity, { ...activity }]);
+      }
     }
   }
 
@@ -30,7 +33,7 @@ const HomeActivity = () => {
   }, []);
   return (
     <SafeAreaView>
-      {!activity.length && (
+      {!activity.activity?.length && (
         <ActivityIndicator size={25} color={tw`text-blue-900`.color} />
       )}
       <MyHeader refresh={readActivity} myListActivity={listActivity} />

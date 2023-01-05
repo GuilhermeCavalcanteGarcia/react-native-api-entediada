@@ -21,7 +21,7 @@ const Activity = ({ activity, addToList }) => {
             <FontAwesome
               name="plus-circle"
               size={25}
-              color={tw`text-blue-900`.color}
+              color={tw`text-green-500`.color}
             />
           </TouchableOpacity>
         </View>
@@ -37,6 +37,9 @@ const Activity = ({ activity, addToList }) => {
   }
   return (
     <View style={tw`border-2 rounded-2xl border-blue-800 bg-blue-400 p-2`}>
+      <TouchableOpacity style={tw`pb-2`}>
+        <FontAwesome name="remove" size={25} color={tw`text-red-600`.color} />
+      </TouchableOpacity>
       <View
         style={tw`flex-row justify-center border-2 rounded-2xl bg-blue-500 border-blue-800 p-10`}
       >
